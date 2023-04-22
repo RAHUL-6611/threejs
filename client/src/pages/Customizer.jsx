@@ -12,6 +12,18 @@ import { fadeAnimation,slideAnimation
 
 const Customizer = () => {
   const snap=useSnapshot(state)
+  
+  //show tab content depending on the activetab
+  const [file,setFile]=useState('');
+
+  const [prompt, setPrompt]=useState('');
+  const [generatingImg,setgeneratingImg]=useState(false);
+  const [activeEditorTab,setActiveEditorTab]=useState("");
+  const [activeFilterTab,setActiveFilterTab]=useState({
+    logoShirt:true,
+    StylishShirt:false,
+  });
+
   return (
     <AnimatePresence>
     {!snap.intro &&(
@@ -25,6 +37,7 @@ const Customizer = () => {
                         tab={tab}
                         handleClick={()=>{}}/>
                       ))}
+                      {generateTabContent()}
                      </div>
         </div>
       </motion.div>
